@@ -1,44 +1,6 @@
 # https://www.reddit.com/r/math/comments/408a45/how_many_turns_does_it_take_on_average_until_this/
 import random
 
-def sliceStringByNeedles(string,sneedle,eneedle):
-    start = string.rfind(sneedle)+len(sneedle)
-    return string[start:string.find(eneedle,start)]
-
-def getScriptName(withpath=False):
-    import sys
-    scriptpath = sys.argv[0]
-    scriptname = sliceStringByNeedles(scriptpath,"\\",".")
-    if withpath:
-        end = len(scriptpath)-len(scriptname)-len(".py")
-        scriptname = scriptpath.replace(scriptname,'')[0:end]+scriptname
-    return scriptname
-
-class Data:
-    def __init__(self,path=None):
-        import os
-        if path == None:
-            path = getScriptName()+"_data.txt"
-        self.path = path
-    def read(self):
-        import os
-        if os.path.exists(self.path):
-            f = open(self.path,"r")
-            data = f.read()
-            f.close()
-        else:
-            data = ""
-            self._write(data)
-            print "File did not exist."
-        return data
-    def _write(self,data):
-        f = open(self.path,"w")
-        f.write(data)
-        f.close()
-    def write(self,data):
-        olddata = self.read()
-        self._write(olddata+data)
-        
 class Glass:
     def __init__(self):
         self.full = False
