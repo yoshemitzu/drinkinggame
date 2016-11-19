@@ -29,18 +29,13 @@ class Game:
 
     def avgturns(self):
         numruns = 0 # set to 0 to reset
-        turnsum = numruns * 0 # set to 0 to reset
-        runs = ""
-        data = Data()
+        turnsum = 0 # set to 0 to reset
         while True:
             turnsum += self.run()
             numruns += 1
             avg = float(turnsum)/numruns
-            runs += str(numruns) +","+ str(turnsum)+","+ str(avg)+"\n"
             if numruns % 10000 == 0:
                 print "Avg so far: "+str(avg)+" turns after "+str(numruns)+" runs"
-                data.write(runs)
-                runs = ""
 
 def createemptyglasses(numglasses=6):
     glasses = []
